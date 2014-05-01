@@ -1,0 +1,44 @@
+<section id="main">
+	<div class="top-nav">
+		<ul class="breadcrumb">
+			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
+				<span class="divider">/</span>
+				<ng-switch on="$last">
+					<span ng-switch-when="true">{{breadcrumb.name}}</span>
+					<span ng-switch-default><a href="{{breadcrumb.path}}">{{breadcrumb.name}}</a></span>
+				</ng-switch>
+			</li>
+		</ul>
+		<input type="text" ng-model="filterName" placeholder="Search..."/>
+		<i class="fa fa-search"></i>
+	</div>
+	<div>
+	<table>
+		<thead>
+			<tr>
+				<th>
+					Teams
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="teams in teamsList | filter: searchFilter">
+				<td>{{$index + 1}}
+				<td>
+					<img ng-src="img/flags/{{teams.Constructor.nationality}}.png"/>
+					{{teams.Constructor.name}}
+				</td>
+				<td>
+					<a href="{{teams.Constructor.url}}">
+						Details				
+					</a>
+				</td>
+				<td>{{teams.points}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+
+</section>

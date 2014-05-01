@@ -1,0 +1,50 @@
+<section id="main">
+	<div class="top-nav">
+		<ul class="breadcrumb">
+			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
+				<span class="divider">/</span>
+				<ng-switch on="$last">
+					<span ng-switch-when="true">{{breadcrumb.name}}</span>
+					<span ng-switch-default><a href="{{breadcrumb.path}}">{{breadcrumb.name}}</a></span>
+				</ng-switch>
+			</li>
+		</ul>
+		<input type="text" ng-model="filterName" placeholder="Search..."/>
+		<i class="fa fa-search"></i>
+	</div>
+	<div>
+		<table class="data-table">
+			<thead>
+				<tr>
+					<th>Race Calendar</th>
+				</tr>
+				<tr>
+					<th>Round</th>
+					<th>Grand Prix</th>
+					<th>Circuit</th>
+					<th>Date</th>
+					<th colspan="2">Winner</th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="races in racesList | filter: searchFilter">
+				<tr>
+					<td>{{races.round}}</td>
+					<td><img ng-src="img/flags/{{races.Circuit.Location.country}}.png"/>
+						{{races.raceName}}
+					</td>
+					<td>{{races.Circuit.circuitName}}</td>
+					<td>{{races.date}}</td>
+					<td>
+						<img ng-src="img/flags/{{races.Results[0].Constructor.nationality}}.png"/>
+						{{races.Results[0].Constructor.name}}
+					</td>					
+					<td>
+						<img ng-src="img/flags/{{races.Results[0].Driver.nationality}}.png"/>
+						{{races.Results[0].Driver.familyName}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</section>

@@ -2,15 +2,17 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.filters',
-  'myApp.services',
-  'myApp.directives',
-  'myApp.controllers'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-  $routeProvider.otherwise({redirectTo: '/view1'});
+angular.module('F1FeederApp', [
+  'F1FeederApp.controllers',
+  'F1FeederApp.services',
+  'services.breadcrumbs',
+  'ngRoute'
+]).config(['$routeProvider', function($routeProvider) {
+	$routeProvider.
+		when("/drivers", {templateUrl: "partials/drivers.html", controller: "driversController"}).
+		when("/drivers/:id", {templateUrl: "partials/driver.html", controller: "driverController"}).
+		when("/teams", {templateUrl: "partials/teams.html", controller: "teamsController"}).
+		when("/races", {templateUrl: "partials/races.html", controller: "racesController"}).
+		when("/teams/:id", {templateUrl: "partials/team.html", controller: "teamController"}).
+		otherwise({redirectTo: '/drivers'});
 }]);

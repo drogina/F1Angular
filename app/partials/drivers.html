@@ -1,0 +1,43 @@
+<section id="main">
+	<div class="top-nav">
+		<ul class="breadcrumb">
+			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
+				<span class="divider">/</span>
+				<ng-switch on="$last">
+					<span ng-switch-when="true">{{breadcrumb.name}}</span>
+					<span ng-switch-default><a href="{{breadcrumb.path}}">{{breadcrumb.name}}</a></span>
+				</ng-switch>
+			</li>
+		</ul>
+		<input type="text" ng-model="nameFilter" placeholder="Search..."/>
+		<i class="fa fa-search"></i>
+	</div>
+
+	<div class="main-data">
+		<h2 class="title">Drivers Championship</h2>
+		<table class="data-table">
+		<thead>
+		  <tr><th class="table-head" colspan="4">Drivers Championship Standings - 2013</th></tr>
+		</thead>
+		<tfoot>
+			<tr><td colspan="4"></td></tr>
+		</tfoot>
+		<tbody class="table-body">
+		  <tr ng-repeat="driver in driversList | filter: searchFilter">
+		    <td>{{$index + 1}}</td>
+		    <td>
+		      <img ng-src="img/flags/{{driver.Driver.nationality}}.png" />
+		      <a href="#/drivers/{{driver.Driver.driverId}}">
+		      	{{driver.Driver.givenName}}&nbsp;{{driver.Driver.familyName}}
+		      </a>
+		    </td>
+		    <td>
+		    	<a href="#/teams/{{driver.Constructors[0].constructorId}}">
+		    		{{driver.Constructors[0].name}}
+		    	</a>
+		    </td>
+		    <td>{{driver.points}}</td>
+		  </tr>
+		</tbody>
+		</table>
+</section>

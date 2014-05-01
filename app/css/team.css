@@ -1,0 +1,40 @@
+.team {
+	background: #000 100% 100% url('../img/backgrounds/grey_wash_wall.png');
+	height: auto;
+	padding: 10px;
+	color: white;
+	font-size: 12px;
+}
+
+#team-img {
+	border-radius: 5px 5px 5px 5px;
+	width: 65px;
+	height: 65px;
+
+}
+
+.team-title {
+	float:left;
+	margin: 5px;
+	position: absolute;
+	display: inline;
+}
+
+.team-title > .team-details {
+	line-height: 16px;
+	margin: 5px;
+	position: absolute;
+	display: inline;
+	float: left;
+	width: auto;
+	border-collapse: separate;
+	background: inherit;
+}
+
+.team-details tr > td:first-child {
+	font-weight: bold;
+}
+
+.team-details td {
+	padding-right: 10px;
+}
