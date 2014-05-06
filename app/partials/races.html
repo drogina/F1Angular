@@ -1,22 +1,29 @@
 <section id="main">
+
 	<div class="top-nav">
 		<ul class="breadcrumb">
-			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
+			<li>
+				<a href="#">
+					<i class="fa fa-home"> F-1 Feeder</i>
+				</a>
+			</li>
+<!-- 			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
 				<span class="divider">/</span>
 				<ng-switch on="$last">
 					<span ng-switch-when="true">{{breadcrumb.name}}</span>
 					<span ng-switch-default><a href="{{breadcrumb.path}}">{{breadcrumb.name}}</a></span>
 				</ng-switch>
-			</li>
+			</li> -->
 		</ul>
-		<input type="text" ng-model="filterName" placeholder="Search..."/>
-		<i class="fa fa-search"></i>
+		<i class="fa fa-search fa-search-icon"></i>
+		<input class="search-text" type="text" ng-model="filterName" placeholder="Search..."/>
 	</div>
+	
 	<div>
 		<table class="data-table">
 			<thead>
 				<tr>
-					<th>Race Calendar</th>
+					<th colspan="6">Race Calendar</th>
 				</tr>
 				<tr>
 					<th>Round</th>
@@ -26,8 +33,11 @@
 					<th colspan="2">Winner</th>
 				</tr>
 			</thead>
-			<tbody ng-repeat="races in racesList | filter: searchFilter">
-				<tr>
+			<tfoot>
+				<tr><td colspan="6"></td></tr>
+			</tfoot>
+			<tbody>
+				<tr ng-repeat="races in racesList | filter: searchFilter">
 					<td>{{races.round}}</td>
 					<td><img ng-src="img/flags/{{races.Circuit.Location.country}}.png"/>
 						{{races.raceName}}
@@ -36,11 +46,15 @@
 					<td>{{races.date}}</td>
 					<td>
 						<img ng-src="img/flags/{{races.Results[0].Constructor.nationality}}.png"/>
-						{{races.Results[0].Constructor.name}}
+						<a href="#/teams/{{races.Results[0].Constructor.constructorId}}">
+							{{races.Results[0].Constructor.name}}
+						</a>
 					</td>					
 					<td>
 						<img ng-src="img/flags/{{races.Results[0].Driver.nationality}}.png"/>
-						{{races.Results[0].Driver.familyName}}
+						<a href="#/drivers/{{races.Results[0].Driver.driverId}}">
+							{{races.Results[0].Driver.familyName}}
+						</a>
 					</td>
 				</tr>
 			</tbody>

@@ -16,6 +16,15 @@
   line-height: 100%;
 }
 
+.table {
+  display: inline;
+  margin: 0 auto;
+}
+
+#nav li.active {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 #logo a img {
   float: left;
   display: block;
@@ -23,31 +32,31 @@
 
 #nav {
   list-style: none;
-  margin: 0;
-  padding: 0;
   border: none;
-  display: table-row;
+  overflow: hidden;
+  margin-bottom: 0;
 }
 
 #nav li {
-  display: table-cell;
-  vertical-align: middle;
-  position: relative;
+  padding: 12px 15px 12px 15px;
   float: left;
-  text-align: center;
-  padding: .5em 0 0 1.5em;
 }
 
 #nav li a {
-  display: table-cell;
   text-decoration: none;
   color: #fff;
-  vertical-align: middle;
+}
+
+#nav li a img {
+  padding-bottom: 10px;
+  height: 50px;
+  width: 45px;
 }
 
 #nav li a span {
   display: table-cell;
-  vertical-align: middle;
+  width: 45px;
+  text-align: center;
 }
 
 .top-nav {
@@ -56,11 +65,23 @@
 }
 
 .breadcrumb {
-  
+  float: left;
+  background: transparent;
+  padding-top: 0;
+  margin: 0;
 }
 
-input {
+.breadcrumb li a {
+  line-height: 13px;
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.7) inset;
+  background-image: linear-gradient(#666670,#46464d);
+}
+
+.search-text {
   position: relative;
+  float: right;
   margin-top: 5px;
   margin-bottom: 10px;
   border-radius: 4px;
@@ -75,12 +96,19 @@ input {
   background-image: linear-gradient(#666670,#46464d);
   display: inline-block;
   vertical-align: middle;
+  padding-left: 5px;
+}
+
+.fa-search-icon {
+  display: inline;
+  position: relative;
+  float: right;
+  padding-right: 10px;
 }
 
 i {
   display: block;
-  position: absolute;
-  padding-left: 3px;
+  padding: 5px;
   margin-top: 10px;
   margin-bottom: 5px;
   color: #fff;

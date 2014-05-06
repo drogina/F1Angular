@@ -24,7 +24,7 @@ table {
 	border-left: medium none;
 }
 
-.data-table th {
+.data-table th, .data-table tfoot{
 	background-color: #DCD9F9;
 	background-image: linear-gradient(#F8F8F8, #ECECEC);
 	border-top: medium none;
@@ -35,9 +35,21 @@ table {
 .data-table td, .data-table th {
 	border-left: 1px solid #dddddd;
 	border-top: 1px solid #dddddd;
-	padding: 10px;
+	padding-left: 10px;
 	text-align: left;
 	font-weight: bold;
+}
+
+.data-table tbody tr:nth-child(even) {
+	background: #F1F1F1;
+}
+
+.data-table tbody tr:nth-child(odd) {
+	background: #FFF;
+}
+
+.data-table tbody tr:hover td {
+	background: #B2B2B2;
 }
 
 a {
@@ -49,11 +61,11 @@ a:hover {
 	text-decoration: none;
 }
 
-tfoot {
+.data-table tfoot {
 	background-image: linear-gradient(#F8F8F8,#ECECEC);
 }
 
-tfoot tr {
+.data-table tfoot tr {
 	border-radius: 0 0 5px 5px;
 }
 

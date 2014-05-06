@@ -1,35 +1,47 @@
 <section id="main">
+
 	<div class="top-nav">
 		<ul class="breadcrumb">
-			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
+			<li>
+				<a href="#">
+					<i class="fa fa-home"> F-1 Feeder</i>
+				</a>
+			</li>
+<!-- 			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
 				<span class="divider">/</span>
 				<ng-switch on="$last">
 					<span ng-switch-when="true">{{breadcrumb.name}}</span>
 					<span ng-switch-default><a href="{{breadcrumb.path}}">{{breadcrumb.name}}</a></span>
 				</ng-switch>
-			</li>
+			</li> -->
 		</ul>
-		<input type="text" ng-model="filterName" placeholder="Search..."/>
-		<i class="fa fa-search"></i>
+		<i class="fa fa-search fa-search-icon"></i>
+		<input class="search-text" type="text" ng-model="filterName" placeholder="Search..."/>
 	</div>
+	
 	<div>
-	<table>
+	<table class="data-table">
 		<thead>
 			<tr>
-				<th>
+				<th class="table-head" colspan="4">
 					Teams
 				</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tfoot>
+			<tr><td colspan="4"></td></tr>
+		</tfoot>
+		<tbody class="table-body">
 			<tr ng-repeat="teams in teamsList | filter: searchFilter">
 				<td>{{$index + 1}}
 				<td>
-					<img ng-src="img/flags/{{teams.Constructor.nationality}}.png"/>
-					{{teams.Constructor.name}}
+					<a href="#/teams/{{teams.Constructor.constructorId}}">
+						<img ng-src="img/flags/{{teams.Constructor.nationality}}.png"/>
+						{{teams.Constructor.name}}
+					</a>
 				</td>
 				<td>
-					<a href="{{teams.Constructor.url}}">
+					<a href="{{teams.Constructor.url}}" target="_blank">
 						Details				
 					</a>
 				</td>

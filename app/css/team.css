@@ -1,29 +1,32 @@
 .team {
 	background: #000 100% 100% url('../img/backgrounds/grey_wash_wall.png');
-	height: auto;
+	height: 100%;
 	padding: 10px;
 	color: white;
 	font-size: 12px;
+	overflow: hidden;
 }
 
-#team-img {
+.team-img {
 	border-radius: 5px 5px 5px 5px;
 	width: 65px;
 	height: 65px;
-
+	float: left;
+	position: relative;
+	display: inline;
 }
 
 .team-title {
 	float:left;
 	margin: 5px;
-	position: absolute;
+	position: relative;
 	display: inline;
 }
 
-.team-title > .team-details {
+.team-details {
 	line-height: 16px;
 	margin: 5px;
-	position: absolute;
+	position: relative;
 	display: inline;
 	float: left;
 	width: auto;
@@ -37,4 +40,32 @@
 
 .team-details td {
 	padding-right: 10px;
+}
+
+#fa-link {
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	font-size: 15px;
+}
+
+.result {
+	background-color: #CFCFFF;
+}
+
+.points {
+	background-color: #DFFFDF;
+}
+
+.third {
+	background-color: #FFDF9F;
+}
+
+.second {
+	background-color: #DFDFDF;
+}
+
+.first {
+	background-color: #FFFFBF;
 }

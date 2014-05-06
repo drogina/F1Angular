@@ -1,20 +1,26 @@
 <section id="main">
+
 	<div class="top-nav">
 		<ul class="breadcrumb">
-			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
+			<li>
+				<a href="#">
+					<i class="fa fa-home"> F-1 Feeder</i>
+				</a>
+			</li>
+<!-- 			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
 				<span class="divider">/</span>
 				<ng-switch on="$last">
 					<span ng-switch-when="true">{{breadcrumb.name}}</span>
 					<span ng-switch-default><a href="{{breadcrumb.path}}">{{breadcrumb.name}}</a></span>
 				</ng-switch>
-			</li>
+			</li> -->
 		</ul>
-		<input type="text" ng-model="nameFilter" placeholder="Search..."/>
-		<i class="fa fa-search"></i>
+		<i class="fa fa-search fa-search-icon"></i>
+		<input class="search-text" type="text" ng-model="filterName" placeholder="Search..."/>
 	</div>
 
-	<div class="team">
-		<img id="team-img" ng-src="img/teams/{{id}}.png"/>
+	<nav class="team">
+		<img class="team-img" ng-show="teamDetails" ng-src="img/teams/{{id}}.png"/>
 		<div class="team-title">
 			<img ng-src="img/flags/{{racesList[0].Results[0].Constructor.nationality}}.png"/><br/>
 			{{teamDetails.Constructor.name}}
@@ -35,34 +41,51 @@
 			</tr>
 			<tr>
 				<td>History: </td>
-				<td>{{teamDetails.Constructor.url}}</td>
+				<td>
+					<a href="{{teamDetails.Constructor.url}}" target="_blank">
+					<i id="fa-link" class="fa fa-external-link"></i></a>
+				</td>
 			</tr>
 		</table>
-	</div>
+
+	</nav>
 
 	<div>
 		<table class="data-table">
-			<thead>
+			<thead class="table-head">
 				<tr><th colspan="5" class="full-header">Formula 1 2013 Results</th></tr>
 				<tr>
 					<th>Round</th>
 					<th>Grand Prix</th>
-					<th ng-repeat="driver in teamDriversList">{{driver.familyName}}</th>
+					<th><span ng-bind="racesList[0].Results[0].Driver.familyName"></span></th>
+					<th><span ng-bind="racesList[1].Results[0].Driver.familyName"></span></th>
 					<th>Points</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr><td colspan="5"></td></tr>
 			</tfoot>
-			<tbody ng-repeat="race in racesList">
-				<tr>
+			<tbody>
+				<tr ng-repeat="race in racesList | filter:searchFilter">
 					<td>{{race.round}}</td>
 					<td>
 						<img ng-src="img/flags/{{race.Circuit.Location.country}}.png"/>
 						{{race.raceName}}
 					</td>
-					<td>{{race.Results[0].position}}</td>
-					<td>{{race.Results[1].position}}</td>
+					<td data-ng-class="{points: race.Results[0].position <= 10,
+												 third: race.Results[0].position == 3,
+												 second: race.Results[0].position == 2,
+												 first: race.Results[0].position == 1}"
+							data-ng-bind="race.Results[0].position"
+							class="result">
+					</td>
+					<td data-ng-class="{points: race.Results[1].position <= 10,
+												 third: race.Results[1].position == 3,
+												 second: race.Results[1].position == 2,
+												 first: race.Results[1].position == 1}"
+							data-ng-bind="race.Results[1].position"
+							class="result">
+					</td>
 					<td>{{addition(race.Results[0].points, race.Results[1].points)}}</td>
 				</tr>
 			</tbody>

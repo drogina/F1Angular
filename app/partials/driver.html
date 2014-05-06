@@ -1,37 +1,69 @@
 <section id="main">
+
 	<div class="top-nav">
 		<ul class="breadcrumb">
-			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
+			<li>
+				<a href="#">
+					<i class="fa fa-home"> F-1 Feeder</i>
+				</a>
+			</li>
+<!-- 			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
 				<span class="divider">/</span>
 				<ng-switch on="$last">
 					<span ng-switch-when="true">{{breadcrumb.name}}</span>
 					<span ng-switch-default><a href="{{breadcrumb.path}}">{{breadcrumb.name}}</a></span>
 				</ng-switch>
-			</li>
+			</li> -->
 		</ul>
-		<input type="text" ng-model="nameFilter" placeholder="Search..."/>
-		<i class="fa fa-search"></i>
+		<i class="fa fa-search fa-search-icon"></i>
+		<input class="search-text" type="text" ng-model="nameFilter" placeholder="Search..."/>
 	</div>
-	<nav id="secondary" class="main-nav">
-		<div class="driver-picture">
-			<img ng-show="driver" ng-src="img/drivers/{{driver.Driver.driverId}}.png"/>
+
+	<nav class="team" class="main-nav">
+		<img class="team-img" ng-show="driver" ng-src="img/drivers/{{driver.Driver.driverId}}.png"/>
+
+		<div class="team-title">	
 			<img ng-show="driver" ng-src="img/flags/{{driver.Driver.nationality}}.png"/>
 			<br/>
 			{{driver.Driver.givenName}}<br/>{{driver.Driver.familyName}}
 		</div>
-		<div class="driver-status">
-			Country: {{driver.Driver.nationality}} <br/>
-			Team: {{driver.Constructors[0].name}} <br/>
-			Birth: {{driver.Driver.dateOfBirth}} <br/>
-			<a href="{{driver.Driver.url}}" target="_blank">Biography</a>
-		</div>
+
+		<table class="team-details">
+			<tr>
+				<td>Country:</td>
+				<td>{{driver.Driver.nationality}}</td>
+			</tr>
+
+			<tr>
+				<td>Team: </td>
+				<td>{{driver.Constructors[0].name}}</td>
+			</tr>
+
+			<tr>
+				<td>Birth: </td>
+				<td>{{driver.Driver.dateOfBirth}}</td>
+			</tr>
+
+			<tr>
+				<td>Biography: </td>
+				<td>
+					<a href="{{driver.Driver.url}}" target="_blank">
+						<i id="fa-link" class="fa fa-external-link"></i>
+					</a>
+				</td>
+			</tr>
+		</table>
+
 	</nav>
 
 	<div class="main-content">
-		<table class="result-table">
+		<table class="data-table">
 			<thead>
-				<tr><th colspan="5">Formulat 1 2013 Results</th></tr>
+				<tr><th class="table-head" colspan="5">Formulat 1 2013 Results</th></tr>
 			</thead>
+			<tfoot>
+				<tr><td colspan="5"></td></tr>
+			</tfoot>
 			<tbody>
 				<tr>
 					<td>Round</td> <td>Grand Prix</td> <td>Team</td> <td>Grid</td> <td>Race</td>
