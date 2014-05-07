@@ -3,8 +3,7 @@
 /* Controllers */
 angular.module('F1FeederApp.controllers', []).
   //Drivers controller
-  controller('driversController', function($scope, $location, ergastAPIservice, breadcrumbs) {
-    $scope.breadcrumbs = breadcrumbs;
+  controller('driversController', function($scope, $location, ergastAPIservice) {
     $scope.location = $location;
     $scope.home = $location = 'F1 Home';
 

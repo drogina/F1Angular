@@ -6,7 +6,8 @@ angular.module('F1FeederApp', [
   'F1FeederApp.controllers',
   'F1FeederApp.services',
   'services.breadcrumbs',
-  'ngRoute'
+  'ngRoute',
+  'ui.router'
 ]).config(['$routeProvider', function($routeProvider) {
 	$routeProvider.
 		when("/drivers", {templateUrl: "partials/drivers.html", controller: "driversController"}).

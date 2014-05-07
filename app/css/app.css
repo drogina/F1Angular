@@ -1,3 +1,10 @@
+.title {
+	color: #fff;
+	text-shadow: 2px 2px #000;
+	margin-left: 30px;
+	font-style: italic;
+}
+
 .data-table {
 	border: 1px solid #dddddd;
 	border-radius: 5px;
@@ -69,8 +76,12 @@ a:hover {
 	border-radius: 0 0 5px 5px;
 }
 
+html, body {
+	background: #000 100% 100% url('../img/backgrounds/grey_wash_wall.png');
+	min-height: 100%;
+}
+
 #main {
   clear: both;
-  background: #000 100% 100% url('../img/backgrounds/crossword.png');
   padding: 0 0 30px 0;
 }
