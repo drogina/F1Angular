@@ -13,7 +13,9 @@
 				</ng-switch>
 			</li>
 		</ul>
-		<i class="fa fa-search fa-search-icon"></i>
-		<input class="search-text" type="text" ng-model="nameFilter" placeholder="Search..."/>
+		<span ng-show="showSearch">
+			<i class="fa fa-search fa-search-icon"></i>
+			<input class="search-text" type="text" ng-model="filterName" placeholder="Search..."/>
+		</span>
 	</div>
 	<div ui-view></div>

@@ -3,6 +3,15 @@
 /* Controllers */
 angular.module('F1FeederApp.controllers', [])
 
+  .controller('menuController', function($scope, $location) {
+    $scope.filterName = null;
+
+    $scope.$on('$stateChangeSuccess', function() {
+      $scope.menuActive = $location.path().split("/")[2];
+      $scope.showSearch = $location.path().split("/").length === 3;
+    });
+  })
+
   //Drivers controller
   .controller('driversController', function($scope, $location, ergastAPIservice) {
     $scope.location = $location;
@@ -12,11 +21,11 @@ angular.module('F1FeederApp.controllers', [])
       return navBarPath === breadcrumbs.getFirst().name;
     };
 
-    $scope.nameFilter = null;
+    // $scope.filterName = $scope.$parent.filterName;
   	$scope.driversList = [];
   	$scope.searchFilter = function (driver) {
-  		var re = new RegExp($scope.nameFilter, 'i');
-  		return !$scope.nameFilter || re.test(driver.Driver.givenName) || re.test(driver.Driver.familyName);
+  		var re = new RegExp($scope.$parent.filterName, 'i');
+  		return !$scope.$parent.filterName || re.test(driver.Driver.givenName) || re.test(driver.Driver.familyName);
   	};
 
   	ergastAPIservice.getDrivers().success(function (response) {
@@ -42,6 +51,7 @@ angular.module('F1FeederApp.controllers', [])
   	ergastAPIservice.getDriverRaces($scope.id).success(function (response) {
   		$scope.races = response.MRData.RaceTable.Races;
   	});
+
   })
 
   //Team controller
@@ -101,11 +111,5 @@ angular.module('F1FeederApp.controllers', [])
     ergastAPIservice.getRaces().success(function (response) {
       $scope.racesList = response.MRData.RaceTable.Races;
     })
-  })
-
-  .controller('menuController', function($scope, $location) {
-    // $scope.menuActive = 'drivers';
-    $scope.$on('$stateChangeSuccess', function() {
-      $scope.menuActive = $location.path().split("/")[1];
-    });
   });
+

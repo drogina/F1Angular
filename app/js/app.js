@@ -16,6 +16,7 @@ angular.module('F1FeederApp', [
 			abstract: true,
 			url: '/home',
 			templateUrl: 'partials/home.html',
+			controller: 'menuController'
 		})
 		.state('home.drivers', {
 			url: '/drivers',
