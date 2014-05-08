@@ -15,6 +15,7 @@
 	float: left;
 	position: relative;
 	display: inline;
+	background: gray;
 }
 
 .team-title {

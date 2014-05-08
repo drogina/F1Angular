@@ -5,6 +5,7 @@
 angular.module('F1FeederApp', [
   'F1FeederApp.controllers',
   'F1FeederApp.services',
+  'F1FeederApp.directives',
   'services.breadcrumbs',
   'ui.router'
 ]).config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {

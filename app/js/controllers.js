@@ -1,9 +1,10 @@
 'use strict';
 
 /* Controllers */
-angular.module('F1FeederApp.controllers', []).
+angular.module('F1FeederApp.controllers', [])
+
   //Drivers controller
-  controller('driversController', function($scope, $location, ergastAPIservice) {
+  .controller('driversController', function($scope, $location, ergastAPIservice) {
     $scope.location = $location;
     $scope.home = $location = 'F1 Home';
 
@@ -22,25 +23,29 @@ angular.module('F1FeederApp.controllers', []).
 		  $scope.driversList = response.MRData.StandingsTable.StandingsLists[0].DriverStandings;
   	});
 
-  }).
+  })
 
   //Driver controller
-  controller('driverController', function($scope, $stateParams, ergastAPIservice) {
+  .controller('driverController', function($scope, $stateParams, ergastAPIservice) {
   	$scope.id = $stateParams.id;
   	$scope.races = [];
   	$scope.driver = null;
+    $scope.driverImageUrl = '';
+    $scope.flagImageUrl = '';
 
   	ergastAPIservice.getDriverDetails($scope.id).success(function (response) {
   		$scope.driver = response.MRData.StandingsTable.StandingsLists[0].DriverStandings[0];
+      $scope.driverImageUrl = 'img/drivers/' + $scope.driver.Driver.driverId + '.png';
+      $scope.flagImageUrl = 'img/flags/' + $scope.driver.Driver.nationality + '.png';
   	});
 
   	ergastAPIservice.getDriverRaces($scope.id).success(function (response) {
   		$scope.races = response.MRData.RaceTable.Races;
   	});
-  }).
+  })
 
   //Team controller
-  controller('teamController', function($scope, $stateParams, ergastAPIservice) {
+  .controller('teamController', function($scope, $stateParams, ergastAPIservice) {
     $scope.id = $stateParams.id;
     $scope.racesList = [];
     $scope.teamDriversList = [];
@@ -66,10 +71,10 @@ angular.module('F1FeederApp.controllers', []).
     ergastAPIservice.getTeamDetails($scope.id).success(function (response) {
       $scope.teamDetails = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings[0];
     });
-  }).
+  })
 
   //Teams controller
-  controller('teamsController', function($scope, ergastAPIservice) {
+  .controller('teamsController', function($scope, ergastAPIservice) {
     $scope.teamsList = [];
     $scope.filterName = null;
 
@@ -81,10 +86,10 @@ angular.module('F1FeederApp.controllers', []).
     ergastAPIservice.getTeams().success(function (response) {
       $scope.teamsList = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
     })
-  }).
+  })
 
   //Races controller
-  controller('racesController', function($scope, ergastAPIservice) {
+  .controller('racesController', function($scope, ergastAPIservice) {
     $scope.racesList = [];
     $scope.filterName = null;
 
@@ -96,9 +101,9 @@ angular.module('F1FeederApp.controllers', []).
     ergastAPIservice.getRaces().success(function (response) {
       $scope.racesList = response.MRData.RaceTable.Races;
     })
-  }).
+  })
 
-  controller('menuController', function($scope, $location) {
+  .controller('menuController', function($scope, $location) {
     // $scope.menuActive = 'drivers';
     $scope.$on('$stateChangeSuccess', function() {
       $scope.menuActive = $location.path().split("/")[1];

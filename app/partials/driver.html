@@ -1,10 +1,11 @@
 
 
 	<nav class="team" class="main-nav">
-		<img class="team-img" ng-show="driver" ng-src="img/drivers/{{driver.Driver.driverId}}.png"/>
+
+		<img class="team-img" ng-src="{{driverImageUrl}}" fallback-src="img/daftpunktocat-guy.gif"/>
 
 		<div class="team-title">	
-			<img ng-show="driver" ng-src="img/flags/{{driver.Driver.nationality}}.png"/>
+			<img ng-show="driver" ng-src="{{flagImageUrl}}"/>
 			<br/>
 			{{driver.Driver.givenName}}<br/>{{driver.Driver.familyName}}
 		</div>
