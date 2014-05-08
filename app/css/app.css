@@ -74,6 +74,7 @@ a:hover {
 
 .data-table tfoot tr {
 	border-radius: 0 0 5px 5px;
+	height: 15px;
 }
 
 html, body {
