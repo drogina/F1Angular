@@ -1,94 +1,73 @@
 
-	<div class="top-nav">
-		<ul class="breadcrumb">
-			<li>
-				<a href="#">
-					<i class="fa fa-home"> F-1 Feeder</i>
-				</a>
-			</li>
-			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
-				<span class="divider">/</span>
-				<ng-switch on="$last">
-					<span ng-switch-when="true">{{breadcrumb.name}}</span>
-					<span ng-switch-default><a href="{{breadcrumb.path}}">{{breadcrumb.name}}</a></span>
-				</ng-switch>
-			</li>
-		</ul>
-		<i class="fa fa-search fa-search-icon"></i>
-		<input class="search-text" type="text" ng-model="filterName" placeholder="Search..."/>
+<nav class="team">
+	<img class="team-img" ng-show="teamDetails" ng-src="img/teams/{{id}}.png"/>
+	<div class="team-title">
+		<img ng-src="img/flags/{{racesList[0].Results[0].Constructor.nationality}}.png"/><br/>
+		{{teamDetails.Constructor.name}}
 	</div>
 
-	<nav class="team">
-		<img class="team-img" ng-show="teamDetails" ng-src="img/teams/{{id}}.png"/>
-		<div class="team-title">
-			<img ng-src="img/flags/{{racesList[0].Results[0].Constructor.nationality}}.png"/><br/>
-			{{teamDetails.Constructor.name}}
-		</div>
+	<table class="team-details">
+		<tr>
+			<td>Country: </td>
+			<td>{{teamDetails.Constructor.nationality}}</td>
+		</tr>
+		<tr>
+			<td>Position: </td>
+			<td>{{teamDetails.position}}</td>
+		</tr>
+		<tr>
+			<td>Points: </td>
+			<td>{{teamDetails.points}}</td>
+		</tr>
+		<tr>
+			<td>History: </td>
+			<td>
+				<a href="{{teamDetails.Constructor.url}}" target="_blank">
+				<i id="fa-link" class="fa fa-external-link"></i></a>
+			</td>
+		</tr>
+	</table>
+</nav>
 
-		<table class="team-details">
+<div>
+	<table class="data-table">
+		<thead class="table-head">
+			<tr><th colspan="5" class="full-header">Formula 1 2013 Results</th></tr>
 			<tr>
-				<td>Country: </td>
-				<td>{{teamDetails.Constructor.nationality}}</td>
+				<th>Round</th>
+				<th>Grand Prix</th>
+				<th><span ng-bind="racesList[0].Results[0].Driver.familyName"></span></th>
+				<th><span ng-bind="racesList[1].Results[0].Driver.familyName"></span></th>
+				<th>Points</th>
 			</tr>
-			<tr>
-				<td>Position: </td>
-				<td>{{teamDetails.position}}</td>
-			</tr>
-			<tr>
-				<td>Points: </td>
-				<td>{{teamDetails.points}}</td>
-			</tr>
-			<tr>
-				<td>History: </td>
+		</thead>
+		<tfoot>
+			<tr><td colspan="5"></td></tr>
+		</tfoot>
+		<tbody>
+			<tr ng-repeat="race in racesList | filter:searchFilter">
+				<td>{{race.round}}</td>
 				<td>
-					<a href="{{teamDetails.Constructor.url}}" target="_blank">
-					<i id="fa-link" class="fa fa-external-link"></i></a>
+					<img ng-src="img/flags/{{race.Circuit.Location.country}}.png"/>
+					{{race.raceName}}
 				</td>
+				<td data-ng-class="{points: race.Results[0].position <= 10,
+											 third: race.Results[0].position == 3,
+											 second: race.Results[0].position == 2,
+											 first: race.Results[0].position == 1}"
+						data-ng-bind="race.Results[0].position"
+						class="result">
+				</td>
+				<td data-ng-class="{points: race.Results[1].position <= 10,
+											 third: race.Results[1].position == 3,
+											 second: race.Results[1].position == 2,
+											 first: race.Results[1].position == 1}"
+						data-ng-bind="race.Results[1].position"
+						class="result">
+				</td>
+				<td>{{addition(race.Results[0].points, race.Results[1].points)}}</td>
 			</tr>
-		</table>
+		</tbody>
+	</table>
+</div>
 
-	</nav>
-
-	<div>
-		<table class="data-table">
-			<thead class="table-head">
-				<tr><th colspan="5" class="full-header">Formula 1 2013 Results</th></tr>
-				<tr>
-					<th>Round</th>
-					<th>Grand Prix</th>
-					<th><span ng-bind="racesList[0].Results[0].Driver.familyName"></span></th>
-					<th><span ng-bind="racesList[1].Results[0].Driver.familyName"></span></th>
-					<th>Points</th>
-				</tr>
-			</thead>
-			<tfoot>
-				<tr><td colspan="5"></td></tr>
-			</tfoot>
-			<tbody>
-				<tr ng-repeat="race in racesList | filter:searchFilter">
-					<td>{{race.round}}</td>
-					<td>
-						<img ng-src="img/flags/{{race.Circuit.Location.country}}.png"/>
-						{{race.raceName}}
-					</td>
-					<td data-ng-class="{points: race.Results[0].position <= 10,
-												 third: race.Results[0].position == 3,
-												 second: race.Results[0].position == 2,
-												 first: race.Results[0].position == 1}"
-							data-ng-bind="race.Results[0].position"
-							class="result">
-					</td>
-					<td data-ng-class="{points: race.Results[1].position <= 10,
-												 third: race.Results[1].position == 3,
-												 second: race.Results[1].position == 2,
-												 first: race.Results[1].position == 1}"
-							data-ng-bind="race.Results[1].position"
-							class="result">
-					</td>
-					<td>{{addition(race.Results[0].points, race.Results[1].points)}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-</section>

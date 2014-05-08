@@ -1,10 +1,11 @@
 .team {
-	background: #000 100% 100% url('../img/backgrounds/grey_wash_wall.png');
+	background: #000 100% 100% url('../img/backgrounds/grey_wash_wall_dark.png');
 	height: 100%;
 	padding: 10px;
 	color: white;
 	font-size: 12px;
 	overflow: hidden;
+	border-bottom: 1px solid black;
 }
 
 .team-img {

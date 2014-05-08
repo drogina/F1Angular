@@ -1,10 +1,11 @@
 'use strict';
-angular.module('services.breadcrumbs', []).factory('breadcrumbs', ['$rootScope', '$location', function($rootScope, $location) {
+angular.module('services.breadcrumbs', [])
+	.factory('breadcrumbs', ['$rootScope', '$location', function($rootScope, $location) {
 
 	var breadcrumbs = [];
 	var breadcrumbsService = {};
 
-	$rootScope.$on('$routeChangeSuccess', function(event, current) {
+	$rootScope.$on('$locationChangeSuccess', function(event, current) {
 		var pathElements = $location.path().split('/'), result = [], i;
 		var breadcrumbPath = function (index) {
 			return '/' + (pathElements.slice(0, index + 1)).join('/');

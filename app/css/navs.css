@@ -62,6 +62,7 @@
 .top-nav {
   background: linear-gradient(#494852,#2a2a30);
   overflow: hidden;
+  border-bottom: 1px solid black;
 }
 
 .breadcrumb {

@@ -25,8 +25,8 @@ angular.module('F1FeederApp.controllers', []).
   }).
 
   //Driver controller
-  controller('driverController', function($scope, $routeParams, ergastAPIservice) {
-  	$scope.id = $routeParams.id;
+  controller('driverController', function($scope, $stateParams, ergastAPIservice) {
+  	$scope.id = $stateParams.id;
   	$scope.races = [];
   	$scope.driver = null;
 
@@ -40,8 +40,8 @@ angular.module('F1FeederApp.controllers', []).
   }).
 
   //Team controller
-  controller('teamController', function($scope, $routeParams, ergastAPIservice) {
-    $scope.id = $routeParams.id;
+  controller('teamController', function($scope, $stateParams, ergastAPIservice) {
+    $scope.id = $stateParams.id;
     $scope.racesList = [];
     $scope.teamDriversList = [];
     $scope.teamDetails = [];
@@ -100,7 +100,7 @@ angular.module('F1FeederApp.controllers', []).
 
   controller('menuController', function($scope, $location) {
     // $scope.menuActive = 'drivers';
-    $scope.$on('$routeChangeSuccess', function() {
+    $scope.$on('$stateChangeSuccess', function() {
       $scope.menuActive = $location.path().split("/")[1];
     });
   });

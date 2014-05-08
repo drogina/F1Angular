@@ -1,22 +1,4 @@
 
-	<div class="top-nav">
-		<ul class="breadcrumb">
-			<li>
-				<a href="#">
-					<i class="fa fa-home"> F-1 Feeder</i>
-				</a>
-			</li>
-			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
-				<span class="divider">/</span>
-				<ng-switch on="$last">
-					<span ng-switch-when="true">{{breadcrumb.name}}</span>
-					<span ng-switch-default><a href="{{breadcrumb.path}}">{{breadcrumb.name}}</a></span>
-				</ng-switch>
-			</li>
-		</ul>
-		<i class="fa fa-search fa-search-icon"></i>
-		<input class="search-text" type="text" ng-model="nameFilter" placeholder="Search..."/>
-	</div>
 
 	<nav class="team" class="main-nav">
 		<img class="team-img" ng-show="driver" ng-src="img/drivers/{{driver.Driver.driverId}}.png"/>
@@ -58,7 +40,7 @@
 	<div class="main-content">
 		<table class="data-table">
 			<thead>
-				<tr><th class="table-head" colspan="5">Formulat 1 2013 Results</th></tr>
+				<tr><th class="table-head" colspan="5">Formula 1 2013 Results</th></tr>
 			</thead>
 			<tfoot>
 				<tr><td colspan="5"></td></tr>
@@ -77,5 +59,3 @@
 			</tbody>
 		</table>
 	</div>
-
-</section>

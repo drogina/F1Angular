@@ -1,24 +1,5 @@
 
-	<div class="top-nav">
-		<ul class="breadcrumb">
-			<li>
-				<a href="#">
-					<i class="fa fa-home"> F-1 Feeder</i>
-				</a>
-			</li>
-			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
-				<!-- <span class="divider">/</span> -->
-				<ng-switch on="$last">
-					<span ng-switch-when="breadcrumb">{{breadcrumb.name}}</span>
-					<span ng-switch-default><a href="{{breadcrumb.path}}">{{breadcrumb.name}}</a></span>
-				</ng-switch>
-			</li>
-		</ul>
-		<i class="fa fa-search fa-search-icon"></i>
-		<input class="search-text" type="text" ng-model="filterName" placeholder="Search..."/>
-	</div>
-
-	<div>
+<div>
 	<table class="data-table">
 		<thead>
 			<tr>
@@ -34,7 +15,7 @@
 			<tr ng-repeat="teams in teamsList | filter: searchFilter">
 				<td>{{$index + 1}}
 				<td>
-					<a href="#/teams/{{teams.Constructor.constructorId}}">
+					<a href="#/home/teams/{{teams.Constructor.constructorId}}">
 						<img ng-src="img/flags/{{teams.Constructor.nationality}}.png"/>
 						{{teams.Constructor.name}}
 					</a>
@@ -49,7 +30,3 @@
 		</tbody>
 	</table>
 </div>
-
-
-
-</section>

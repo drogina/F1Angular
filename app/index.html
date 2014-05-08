@@ -15,7 +15,6 @@
 
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/angular-route/angular-route.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -37,19 +36,19 @@
       <div class="table">
         <ul id="nav">
           <li ng-class="{active: menuActive == 'drivers'}">
-            <a href="#/drivers">
+            <a href="#/home/drivers">
               <img src="img/drivers.png"/>
               <span>Drivers</span>
             </a>
           </li>
           <li ng-class="{active: menuActive == 'teams'}">
-            <a href="#/teams">
+            <a href="#/home/teams">
               <img src="img/teams.png"/>
               <span>Teams</span>
             </a>
           </li>
           <li ng-class="{active: menuActive == 'races'}">
-            <a href="#/races">
+            <a href="#/home/races">
               <img src="img/races.png"/>
               <span>Races</span>
             </a>
@@ -59,8 +58,8 @@
     </div>
 
     <section id="main">
-      <ng-view></ng-view>
-
+      <div ui-view></div>
+    </section>
     <!-- In production use:
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
     -->
