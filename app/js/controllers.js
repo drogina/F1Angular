@@ -60,6 +60,7 @@ angular.module('F1FeederApp.controllers', [])
     $scope.racesList = [];
     $scope.teamDriversList = [];
     $scope.teamDetails = [];
+    $scope.teamName;
     
     $scope.addition = function (num1,num2) {
       return parseInt(num1) + parseInt(num2);
@@ -81,6 +82,7 @@ angular.module('F1FeederApp.controllers', [])
     ergastAPIservice.getTeamDetails($scope.id).success(function (response) {
       $scope.teamDetails = response.MRData.StandingsTable.StandingsLists[0].ConstructorStandings[0];
     });
+
   })
 
   //Teams controller

@@ -1,18 +1,14 @@
 	<div class="top-nav">
-		<ul class="breadcrumb">
+
+		<ol class="breadcrumb">
 			<li>
 				<a href="#">
 					<i class="fa fa-home"> F-1 Feeder</i>
 				</a>
 			</li>
-			<li ng-repeat="breadcrumb in breadcrumbs.getAll()">
-				<!-- <span class="divider">/</span> -->
-				<ng-switch on="$last">
-					<span ng-switch-when="true">{{breadcrumb.name}}</span>
-					<span ng-switch-default><a href="{{breadcrumb.path}}">{{breadcrumb.name}}</a></span>
-				</ng-switch>
-			</li>
-		</ul>
+			<app-breadcrumbs breadcrumb-property="data.breadcrumb"> </app-breadcrumbs>
+		</ol>
+
 		<span ng-show="showSearch">
 			<i class="fa fa-search fa-search-icon"></i>
 			<input class="search-text" type="text" ng-model="filterName" placeholder="Search..."/>
