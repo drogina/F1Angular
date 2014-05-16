@@ -13,7 +13,7 @@
 			    <td>{{$index + 1}}</td>
 			    <td>
 			      <img ng-src="img/flags/{{driver.Driver.nationality}}.png" />
-			      <a href="#/home/drivers/{{driver.Driver.driverId}}">
+			      <a ui-sref="home.drivers.driver({ id: driver.Driver.driverId })">
 			      	{{driver.Driver.givenName}}&nbsp;{{driver.Driver.familyName}}
 			      </a>
 			    </td>
@@ -26,3 +26,4 @@
 			  </tr>
 			</tbody>
 		</table>
+	</div>

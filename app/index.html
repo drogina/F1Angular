@@ -25,8 +25,8 @@
     <script src="js/services.js"></script>
 
   </head>
-  <body ng-app="F1FeederApp">
-    <div class="navHeader" ng-controller="menuController">
+  <body ng-app="F1FeederApp" ng-controller="menuController">
+    <div class="navHeader">
       <div id="logo">
         <a href="#/home/drivers">
           <img src="img/main-logo-responsive.png"/>
@@ -58,7 +58,23 @@
     </div>
 
     <section id="main">
-      <div ui-view="header"></div>
+      <div class="top-nav">
+
+        <ol class="breadcrumb">
+          <li>
+            <a href="#">
+              <i class="fa fa-home"> F-1 Feeder</i>
+            </a>
+          </li>
+          <app-breadcrumbs breadcrumb-property="data.breadcrumb"> </app-breadcrumbs>
+        </ol>
+
+        <span ng-show="showSearch">
+          <i class="fa fa-search fa-search-icon"></i>
+          <input class="search-text" type="text" ng-model="filterName" placeholder="Search..."/>
+        </span>
+      </div>
+      <div ui-view="content"></div>    
     </section>
     <!-- In production use:
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>

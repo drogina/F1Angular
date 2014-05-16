@@ -13,9 +13,12 @@ angular.module('F1FeederApp.controllers', [])
   })
 
   //Drivers controller
-  .controller('driversController', function($scope, $location, ergastAPIservice) {
-    $scope.location = $location;
-    $scope.home = $location = 'F1 Home';
+  .controller('driversController', function($scope, $state, $location, ergastAPIservice) {
+    console.log('this is the current state')
+    console.log($state.$current);
+
+    // $scope.location = $location;
+    // $scope.home = $location = 'F1 Home';
 
     $scope.isNavbarActive = function (navBarPath) {
       return navBarPath === breadcrumbs.getFirst().name;
@@ -35,8 +38,9 @@ angular.module('F1FeederApp.controllers', [])
   })
 
   //Driver controller
-  .controller('driverController', function($scope, $stateParams, ergastAPIservice) {
-  	$scope.id = $stateParams.id;
+  .controller('driverController', function($scope, $state, $stateParams, ergastAPIservice) {
+  	console.log($state);
+    $scope.id = $stateParams.id;
   	$scope.races = [];
   	$scope.driver = null;
     $scope.driverImageUrl = '';
@@ -64,11 +68,6 @@ angular.module('F1FeederApp.controllers', [])
     
     $scope.addition = function (num1,num2) {
       return parseInt(num1) + parseInt(num2);
-    }
-
-    $scope.searchFilter = function(race) {
-      var re = new RegExp($scope.filterName, 'i');
-      return !$scope.filterName || re.test(race.raceName);
     };
 
     ergastAPIservice.getTeamDrivers($scope.id).success(function(response) {
@@ -88,11 +87,10 @@ angular.module('F1FeederApp.controllers', [])
   //Teams controller
   .controller('teamsController', function($scope, ergastAPIservice) {
     $scope.teamsList = [];
-    $scope.filterName = null;
 
     $scope.searchFilter = function(teams) {
-      var re = new RegExp($scope.filterName, 'i');
-      return !$scope.filterName || re.test(teams.Constructor.name);
+      var re = new RegExp($scope.$parent.filterName, 'i');
+      return !$scope.$parent.filterName || re.test(teams.Constructor.name);
     };
 
     ergastAPIservice.getTeams().success(function (response) {

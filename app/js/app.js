@@ -15,28 +15,32 @@ angular.module('F1FeederApp', [
 		.state('home', {
 			abstract: true,
 			url: '/home',
-			views: {
-				'header': {
-					templateUrl: 'partials/home.html',
-					controller: 'menuController'
-				}
-			},
+			// templateUrl: 'partials/home.html',
+			controller: 'menuController',
 			data: {
 				breadcrumb: 'home'
 			}
 		})
 		.state('home.drivers', {
 			url: '/drivers',
-			templateUrl: 'partials/drivers.html',
-			controller: 'driversController',
+			views: {
+				'content@': {
+					templateUrl: 'partials/drivers.html',
+					controller: 'driversController'
+				}
+			},
 			data: {
 				breadcrumb: 'Drivers'
 			}
 		})
 		.state('home.drivers.driver', {
 			url: '/:id',
-			templateUrl: 'partials/driver.html',
-			controller: 'driverController',
+			views: {
+				'content@': {
+					templateUrl: 'partials/driver.html',
+					controller: 'driverController'
+				}
+			},
 			data: {
 				breadcrumb: '{{driver.givenName}}' + ' ' + '{{driver.familyName}}'
 			},
@@ -53,16 +57,24 @@ angular.module('F1FeederApp', [
 		})
 		.state('home.teams', {
 			url: '/teams',
-			templateUrl: 'partials/teams.html',
-			controller: 'teamsController',
+			views: {
+				'content@': {
+					templateUrl: 'partials/teams.html',
+					controller: 'teamsController'
+				}
+			},
 			data: {
 				breadcrumb: 'Teams'
 			}
 		})
 		.state('home.teams.team', {
 			url: '/:id',
-			templateUrl: 'partials/team.html',
-			controller: 'teamController',
+			views: {
+				'content@': {
+					templateUrl: 'partials/team.html',
+					controller: 'teamController'
+				}
+			},
 			data: {
 				breadcrumb: '{{teamName}}'
 			},
@@ -80,8 +92,12 @@ angular.module('F1FeederApp', [
 		})
 		.state('home.races', {
 			url: '/races',
-			templateUrl: 'partials/races.html',
-			controller: 'racesController',
+			views: {
+				'content@': {
+					templateUrl: 'partials/races.html',
+					controller: 'racesController'
+				}
+			},
 			data: {
 				breadcrumb: 'Races'
 			}
